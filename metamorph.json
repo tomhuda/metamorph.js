@@ -1,0 +1,20 @@
+{
+  "name": "metamorph",
+  "bpm": "1.0.0",
+  "bpm:build": {
+    "bpm_libs.js": {
+      "directories": [
+        "lib"
+      ],
+      "minifier": "uglify-js"
+    },
+    "bpm_styles.css": {
+      "directories": [
+        "css"
+      ]
+    }
+  },
+  "dependencies": {
+    "qunit": ">= 0"
+  }
+}
