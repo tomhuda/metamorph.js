@@ -1,21 +1,5 @@
-# metamorph_test
+# Metamorph.js
 
-### Description:
+Metamorph.js is undergoing heavy development at the moment and is not
+ready for production use at this time.
 
-FIX (describe your package)
-
-### Features / Problems:
-
-  * FIX (list of features or problems)
-
-### Synopsis:
-
-FIX (code sample of usage)
-
-### Requirements:
-
-  * FIX (list of requirements)
-
-### Install:
-
-  * FIX (describe how to install)
