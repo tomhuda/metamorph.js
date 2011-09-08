@@ -1,5 +1,6 @@
 {
   "name": "metamorph",
+  "version": "1.0.0",
   "bpm": "1.0.0",
   "bpm:build": {
     "bpm_libs.js": {
@@ -12,9 +13,15 @@
       "directories": [
         "css"
       ]
+    },
+    "bpm_tests.js": {
+      "directories": [
+        "tests"
+      ]
     }
   },
   "dependencies": {
-    "qunit": ">= 0"
+    "qunit": ">= 0",
+    "spade": ">= 0"
   }
 }

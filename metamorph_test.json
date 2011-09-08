@@ -1,0 +1,23 @@
+{
+  "name": "metamorph_test",
+  "bpm": "1.0.0",
+  "bpm:build": {
+    "bpm_libs.js": {
+      "minifier": "uglify-js",
+      "files": [
+        "lib"
+      ]
+    },
+    "bpm_styles.css": {
+      "files": [
+        "css"
+      ]
+    }
+  },
+  "dependencies": {
+    "spade": ">= 0",
+    "metamorph": ">= 0",
+    "spade-qunit": ">= 0",
+    "jquery": ">= 0"
+  }
+}
