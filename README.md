@@ -6,6 +6,11 @@ normal cases, like inserting text into a `<p>` tag, and more complicated
 cases, like updating an `<li>` inside a `<ul>` or a `<tr>` inside a
 `<table>` (even after the `<tbody>` was automatically generated).
 
+The motivation for the Metamorph library is to make it possible for template
+engines to insert arbitrary content into a String of outputted HTML that
+they are generating with the ability to replace exactly that content
+later.
+
 ## Supported Browsers
 
 Metamorph.js works on all browsers that support the W3C range API, with
@@ -87,10 +92,8 @@ well-documented in the code.
 
 ## Choices
 
-The motivation for the Metamorph library is to make it possible for template
-engines to insert metamorph literals into a String of outputted HTML
-that they are generating. Because is not always possible to insert a Metamorph
-directly into the DOM, the main initial API is `outerHTML`.
+Because is not always possible to insert a Metamorph directly into the DOM,
+the main initial API is `outerHTML`.
 
 We plan to add some additional conveniences to the Metamorph object to
 allow you to do things like: `morph.appendTo(node)`, to simplify other
