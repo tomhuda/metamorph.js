@@ -19,9 +19,5 @@
         "tests"
       ]
     }
-  },
-  "dependencies": {
-    "qunit": ">= 0",
-    "spade": ">= 0"
   }
 }
