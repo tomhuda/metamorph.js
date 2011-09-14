@@ -38,6 +38,10 @@ file a bug.
 
     // remove the morph
     morph.remove();
+    
+    // append the morph to an existing element, useful when
+    // manually creating morphs and not using a templating library
+    morph.appendTo(document.getElemendById('foo'));
 
 ## Notes
 
@@ -94,7 +98,3 @@ well-documented in the code.
 
 Because is not always possible to insert a Metamorph directly into the DOM,
 the main initial API is `outerHTML`.
-
-We plan to add some additional conveniences to the Metamorph object to
-allow you to do things like: `morph.appendTo(node)`, to simplify other
-uses that were not the original motivation for the project.
