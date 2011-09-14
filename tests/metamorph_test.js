@@ -105,3 +105,16 @@ test("it should work inside a select", function() {
   ok($("#morphing").html().match(/\s*/));
 });
 
+test("it can be appended to an existing node", function() {
+  var morph = Metamorph("<tr><td>HI!</td></tr>");
+
+  $("<table><tbody id='morphing'></tbody></table>").appendTo("#qunit-fixture");
+
+  morph.appendTo($("#morphing")[0]);
+
+  ok($("#morphing").text().match(/\s*HI!\s*$/), "metamorphs can be inserted into the DOM");
+
+  morph.html("<tr><td>BYE!</td></tr>");
+
+  ok($("#morphing").text().match(/\s*BYE!\s*$/), "metamorphs can be inserted into the DOM");
+});
