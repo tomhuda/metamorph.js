@@ -28,6 +28,8 @@ test("it should allow you to remove the entire morph from the page", function() 
 
   morph.remove();
 
+  ok(morph.isRemoved(), "the morph correctly reports that it's removed");
+
   raises(function() {
     morph.html("three");
   });
