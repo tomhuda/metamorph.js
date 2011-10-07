@@ -22,6 +22,20 @@ test("it should allow HTML to be updated after injected into the DOM", function(
   ok($("#qunit-fixture").text().match(/^.*three four five six\s*$/), "Contains the updated text");
 });
 
+test("it should allow low-level APIs to get the start and end tags", function() {
+  var morph = Metamorph(), output;
+
+  output  = morph.startTag();
+  output += "one two three";
+  output += morph.endTag();
+
+  $("#qunit-fixture").html(output);
+
+  morph.html("three four five six");
+
+  ok($("#qunit-fixture").text().match(/^.*three four five six\s*$/), "Contains the updated text");
+});
+
 test("it should allow you to remove the entire morph from the page", function() {
   var morph = Metamorph("one two three");
   $("#qunit-fixture").html(morph.outerHTML());
