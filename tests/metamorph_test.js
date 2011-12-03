@@ -22,6 +22,15 @@ test("it should allow HTML to be updated after injected into the DOM", function(
   ok($("#qunit-fixture").text().match(/^.*three four five six\s*$/), "Contains the updated text");
 });
 
+test("it should allow the entire HTML, including start and end tags, to be replaced", function() {
+  var morph = Metamorph("one two three");
+  $("#qunit-fixture").html(morph.outerHTML());
+
+  morph.replaceWith(morph.startTag() + "three four five six" + morph.endTag());
+
+  ok($("#qunit-fixture").text().match(/^.*three four five six\s*$/), "Contains the updated text");
+});
+
 test("it should allow low-level APIs to get the start and end tags", function() {
   var morph = Metamorph(), output;
 
