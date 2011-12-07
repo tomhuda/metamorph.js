@@ -70,7 +70,7 @@ test("it should work inside a table", function() {
 
   morph.remove();
 
-  ok($("#morphing").text().match(/\s*/));
+  ok($("#morphing").text().match(/^\s*$/));
 });
 
 test("it should work inside a tbody", function() {
@@ -85,7 +85,7 @@ test("it should work inside a tbody", function() {
 
   morph.remove();
 
-  ok($("#morphing").text().match(/\s*/));
+  ok($("#morphing").text().match(/^\s*$/));
 });
 
 test("it should work inside a tr", function() {
@@ -113,7 +113,7 @@ test("it should work inside a ul", function() {
   ok($("#morphing li").text().match(/^\s*BUH BYE!\s*$/), "Should include the new contents");
   morph.remove();
 
-  ok($("#morphing").html().match(/\s*/));
+  ok($("#morphing").html().match(/^\s*$/));
 });
 
 test("it should work inside a select", function() {
@@ -127,7 +127,7 @@ test("it should work inside a select", function() {
   ok($("#morphing option").text().match(/^\s*BUH BYE!\s*$/), "Should include the new contents");
   morph.remove();
 
-  ok($("#morphing").html().match(/\s*/));
+  ok($("#morphing").html().match(/^\s*$/));
 });
 
 test("it can be appended to an existing node", function() {
