@@ -143,3 +143,17 @@ test("it can be appended to an existing node", function() {
 
   ok($("#morphing").text().match(/\s*BYE!\s*$/), "metamorphs can be inserted into the DOM");
 });
+
+// This is a test for IE
+test("it handles replacing with noscope elements", function() {
+  var morph = Metamorph("Testing");
+  morph.appendTo($("#qunit-fixture")[0]);
+
+  ok($("#qunit-fixture").text().match(/Testing/), "should have starting text");
+  ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
+
+  morph.replaceWith("<script type='text/javascript' src='test.js'></script>Contents");
+
+  ok($("#qunit-fixture").html().match(/script/), "should have script tag");
+  ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
+});
