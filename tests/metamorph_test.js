@@ -144,6 +144,29 @@ test("it can be appended to an existing node", function() {
   ok($("#morphing").text().match(/\s*BYE!\s*$/), "metamorphs can be inserted into the DOM");
 });
 
+test("arbitrary HTML can be appended after a morph", function() {
+  var morph = Metamorph("<tr><td>cool story bro</td></tr>");
+
+  $("#qunit-fixture").html("<table>"+morph.outerHTML()+"<table>");
+
+  equal($("#qunit-fixture table td").length, 1, "precond - creates a table with a td");
+
+  morph.after("<tr><td>even cooler story!!!</td></tr>");
+
+  equal($("#qunit-fixture table td").length, 2, "appends a second td to the table");
+});
+
+test("arbitrary HTML can be prepended as the first child of a morph", function() {
+  var morph = Metamorph("<tr><td>cool story bro</td></tr>");
+
+  $("#qunit-fixture").html("<table>"+morph.outerHTML()+"<table>");
+  equal($("#qunit-fixture table td").length, 1, "precond - creates a table with a td");
+
+  morph.prepend("<tr><td>the best story evar</td></tr>");
+
+  equal($("#qunit-fixture table td").length, 2, "prepends a second td to the table");
+});
+
 // This is a test for IE
 test("it handles replacing with noscope elements", function() {
   var morph = Metamorph("Testing");
