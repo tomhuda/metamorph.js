@@ -138,7 +138,10 @@ test("it should work inside a ul", function() {
 
 test("it should work inside a select", function() {
   var morph = Metamorph("<option>HI!</option>");
-  $("#qunit-fixture").html("<select id='morphing'>" + morph.outerHTML() + "</select>");
+
+  // Note that IE9 requires that the `forSelect` argument of outerHTML be true
+  // when the morph is used as a child of a select element
+  $("#qunit-fixture").html("<select id='morphing'>" + morph.outerHTML(true) + "</select>");
 
   ok($("#morphing option").text().match(/^\s*HI!\s*$/), "precond - Should include the contents");
 
