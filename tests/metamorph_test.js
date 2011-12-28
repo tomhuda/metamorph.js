@@ -58,6 +58,26 @@ test("it should allow you to remove the entire morph from the page", function() 
   });
 });
 
+test("it should allow inserting multiple morphs as html", function() {
+  var morph1 = Metamorph("<b>hi</b>"),
+      morph2 = Metamorph("<i>ho</i>");
+  $("#qunit-fixture").html("<span id='morphing'>" + morph1.outerHTML() + " - " + morph2.outerHTML() + "</span>");
+
+  equal($("#morphing b").html(), "hi", "precond - Should include the contents");
+  equal($("#morphing i").html(), "ho", "precond - Should include the contents");
+
+  morph1.html("<b>away</b>");
+  morph2.html("<i>we go</i>");
+
+  equal($("#morphing b").html(), "away", "precond - Should include the new contents");
+  equal($("#morphing i").html(), "we go", "precond - Should include the new contents");
+
+  morph1.remove();
+  morph2.remove();
+
+  equal($("#morphing").html(), " - ", "Should leave no trace of morphs");
+});
+
 test("it should work inside a table", function() {
   var morph = Metamorph("<tr><td>HI!</td></tr>");
   $("#qunit-fixture").html("<table id='morphing'>" + morph.outerHTML() + "</table>");
