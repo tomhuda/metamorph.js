@@ -144,7 +144,7 @@ test("it can be appended to an existing node", function() {
   ok($("#morphing").text().match(/\s*BYE!\s*$/), "metamorphs can be inserted into the DOM");
 });
 
-test("arbitrary HTML can be appended after a morph and removed", function() {
+test("arbitrary HTML can be appended after a morph", function() {
   var morph = Metamorph("<tr><td>cool story bro</td></tr>");
 
   $("#qunit-fixture").html("<table>"+morph.outerHTML()+"<table>");
