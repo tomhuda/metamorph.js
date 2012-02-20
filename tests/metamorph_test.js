@@ -88,6 +88,17 @@ test("it should work inside a tbody", function() {
   ok($("#morphing").text().match(/^\s*$/), "Should leave no trace");
 });
 
+test("it should work for tables without an explicit tbody", function() {
+  var morph = Metamorph("<tr><td>HI!</td></tr>");
+  $("#qunit-fixture").html("<table id='morphing'>" + morph.outerHTML() + "</table>");
+  morph.html("<tr><td>BUH BYE!</td></tr>");
+  
+  equal($("#morphing tbody").length, 1, "Does not result in multiple tbody");
+  
+  morph.remove();
+  ok($("#morphing").text().match(/^\s*$/), "Should leave no trace");
+});
+
 test("it should work inside a tr", function() {
   var morph = Metamorph("<td>HI!</td>");
   $("#qunit-fixture").html("<table id='morphing'><tr>" + morph.outerHTML() + "</tr></table>");
