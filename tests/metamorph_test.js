@@ -169,7 +169,11 @@ test("arbitrary HTML can be prepended as the first child of a morph and removed"
   equal($("#qunit-fixture table").text(), "the best story evarseems good brocool story bro", "inserts nodes in correct order");
 });
 
-// This is a test for IE
+
+/************/
+/* IE TESTS */
+/************/
+
 test("it handles replacing with noscope elements", function() {
   var morph = Metamorph("Testing");
   morph.appendTo($("#qunit-fixture")[0]);
@@ -182,3 +186,26 @@ test("it handles replacing with noscope elements", function() {
   ok($("#qunit-fixture").html().match(/script/), "should have script tag");
   ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
 });
+
+test("it doesn't leave 'shys' hanging around in table", function() {
+  var morph = Metamorph('<tr>Testing</tr>');
+
+  $('#qunit-fixture').html('<table></table>');
+
+  morph.appendTo($("#qunit-fixture table")[0]);
+
+  ok($("#qunit-fixture").text().match(/Testing/), "should have starting text");
+  ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
+});
+
+test("it doesn't leave 'shys' hanging around in tbody", function() {
+  var morph = Metamorph('<tr>Testing</tr>');
+
+  $('#qunit-fixture').html('<table><tbody></tbody></table>');
+
+  morph.appendTo($("#qunit-fixture tbody")[0]);
+
+  ok($("#qunit-fixture").text().match(/Testing/), "should have starting text");
+  ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
+});
+
