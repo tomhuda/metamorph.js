@@ -209,3 +209,13 @@ test("it doesn't leave 'shys' hanging around in tbody", function() {
   ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
 });
 
+test("it handles nested morphs with preceeding spaces", function() {
+  var child = Metamorph("Child"),
+      parent = Metamorph("Parent: "+child.outerHTML());
+
+  parent.appendTo($('#qunit-fixture')[0]);
+
+  child.html('Updated');
+
+  ok($('#qunit-fixture').text().match(/Parent: Updated/), "should not remove spaces");
+});
