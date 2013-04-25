@@ -15,7 +15,7 @@ later.
 
 Metamorph.js works on all browsers that support the W3C range API, with
 a pure-DOM-based fallback for browsers that don't. Since virtually all
-brwosers except for Internet Explorer support the W3C range API, the
+browsers except for Internet Explorer support the W3C range API, the
 DOM-based fallback was developed and tested using Internet Explorer.
 
 It has been tested on Internet Explorer 6+, Firefox 3+, Safari 5, and
