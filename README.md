@@ -89,12 +89,13 @@ surround arbitrary nodes that do not immediately contain text (such as a
 `<tbody>` node). As a result, when the W3C range API is not available, a
 much more complex solution is required.
 
-Additionally, a number of bugs in Internet Explorer's handling of
-innerHTML, and its DOM implementation require some additional
-workarounds. For full information, the Internet Explorer workarounds are
-well-documented in the code.
+Metamorph also includes workarounds for a number of bugs in Internet
+Explorer's handling of innerHTML, and its DOM implementation. For full
+information, the Internet Explorer workarounds are well-documented in
+the code.
 
 ## Choices
 
 Because is not always possible to insert a Metamorph directly into the DOM,
 the main initial API is `outerHTML`.
+
