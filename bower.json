@@ -1,0 +1,9 @@
+{
+  "name": "metamorph",
+  "main": "lib/metamorph.js",
+  "version": "1.0.0",
+  "ignore": [
+    "tests",
+    ".gitignore"
+  ]
+}
