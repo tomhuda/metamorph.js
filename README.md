@@ -38,7 +38,7 @@ file a bug.
 
     // remove the morph
     morph.remove();
-    
+
     // append the morph to an existing element, useful when
     // manually creating morphs and not using a templating library
     morph.appendTo(document.getElemendById('foo'));
@@ -99,3 +99,14 @@ the code.
 Because is not always possible to insert a Metamorph directly into the DOM,
 the main initial API is `outerHTML`.
 
+## Options
+
+If you like, you can disable the range API by using an environment
+variable:
+
+    ENV = { DISABLE_RANGE_API: true }
+
+The current implementation of the range API in many browsers is slower
+than the alternative implementation inside Metamorph.js. It is a good
+idea to benchmark your application and decide whether you'd like to
+disable the range API.
