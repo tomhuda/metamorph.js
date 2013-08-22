@@ -41,7 +41,7 @@ file a bug.
 
     // append the morph to an existing element, useful when
     // manually creating morphs and not using a templating library
-    morph.appendTo(document.getElemendById('foo'));
+    morph.appendTo(document.getElementById('foo'));
 
 ## Notes
 
