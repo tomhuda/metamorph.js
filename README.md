@@ -104,7 +104,7 @@ the main initial API is `outerHTML`.
 If you like, you can disable the range API by using an environment
 variable:
 
-    ENV = { DISABLE_RANGE_API: true }
+    MetamorphENV = { DISABLE_RANGE_API: true }
 
 The current implementation of the range API in many browsers is slower
 than the alternative implementation inside Metamorph.js. It is a good
