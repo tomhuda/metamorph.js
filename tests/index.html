@@ -5,6 +5,13 @@
 	<title>QUnit Test Suite</title>
 	<link rel="stylesheet" href="qunit/qunit.css" type="text/css" media="screen">
 	<script type="text/javascript" src="qunit/qunit.js"></script>
+	<script type="text/javascript">
+		QUnit.config.urlConfig.push('disablerange');
+
+		if ( QUnit.urlParams.disablerange ) {
+			window.ENV = {DISABLE_RANGE_API: true};
+		}
+	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 	<script type="text/javascript" src="../lib/metamorph.js"></script>
 	<script type="text/javascript" src="metamorph_test.js"></script>

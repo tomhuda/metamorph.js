@@ -58,6 +58,15 @@ test("it should allow you to remove the entire morph from the page", function() 
   });
 });
 
+test("it should allow you to replace the entire morph", function() {
+  var morph = Metamorph("one two three");
+  $("#qunit-fixture").html(morph.outerHTML());
+
+  morph.replaceWith("nothing!");
+
+  equal($("#qunit-fixture script").length, 0, "the start and end script tags were removed");
+});
+
 test("it should work inside a table", function() {
   var morph = Metamorph("<tr><td>HI!</td></tr>");
   $("#qunit-fixture").html("<table id='morphing'>" + morph.outerHTML() + "</table>");
@@ -174,48 +183,52 @@ test("arbitrary HTML can be prepended as the first child of a morph and removed"
 /* IE TESTS */
 /************/
 
-test("it handles replacing with noscope elements", function() {
-  var morph = Metamorph("Testing");
-  morph.appendTo($("#qunit-fixture")[0]);
+if ($.browser.msie) {
 
-  ok($("#qunit-fixture").text().match(/Testing/), "should have starting text");
-  ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
+  test("it handles replacing with noscope elements", function() {
+    var morph = Metamorph("Testing");
+    morph.appendTo($("#qunit-fixture")[0]);
 
-  morph.replaceWith("<script type='text/javascript' src='test.js'></script>Contents");
+    ok($("#qunit-fixture").text().match(/Testing/), "should have starting text");
+    ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
 
-  ok($("#qunit-fixture").html().match(/script/), "should have script tag");
-  ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
-});
+    morph.replaceWith("<script type='text/javascript' src='test.js'></script>Contents");
 
-test("it doesn't leave 'shys' hanging around in table", function() {
-  var morph = Metamorph('<tr>Testing</tr>');
+    ok($("#qunit-fixture").html().match(/script/), "should have script tag");
+    ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
+  });
 
-  $('#qunit-fixture').html('<table></table>');
+  test("it doesn't leave 'shys' hanging around in table", function() {
+    var morph = Metamorph('<tr>Testing</tr>');
 
-  morph.appendTo($("#qunit-fixture table")[0]);
+    $('#qunit-fixture').html('<table></table>');
 
-  ok($("#qunit-fixture").text().match(/Testing/), "should have starting text");
-  ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
-});
+    morph.appendTo($("#qunit-fixture table")[0]);
 
-test("it doesn't leave 'shys' hanging around in tbody", function() {
-  var morph = Metamorph('<tr>Testing</tr>');
+    ok($("#qunit-fixture").text().match(/Testing/), "should have starting text");
+    ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
+  });
 
-  $('#qunit-fixture').html('<table><tbody></tbody></table>');
+  test("it doesn't leave 'shys' hanging around in tbody", function() {
+    var morph = Metamorph('<tr>Testing</tr>');
 
-  morph.appendTo($("#qunit-fixture tbody")[0]);
+    $('#qunit-fixture').html('<table><tbody></tbody></table>');
 
-  ok($("#qunit-fixture").text().match(/Testing/), "should have starting text");
-  ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
-});
+    morph.appendTo($("#qunit-fixture tbody")[0]);
 
-test("it handles nested morphs with preceeding spaces", function() {
-  var child = Metamorph("Child"),
-      parent = Metamorph("Parent: "+child.outerHTML());
+    ok($("#qunit-fixture").text().match(/Testing/), "should have starting text");
+    ok(!$("#qunit-fixture").html().match(/&shy;/), "should not have &shy;");
+  });
 
-  parent.appendTo($('#qunit-fixture')[0]);
+  test("it handles nested morphs with preceeding spaces", function() {
+    var child = Metamorph("Child"),
+        parent = Metamorph("Parent: "+child.outerHTML());
 
-  child.html('Updated');
+    parent.appendTo($('#qunit-fixture')[0]);
 
-  ok($('#qunit-fixture').text().match(/Parent: Updated/), "should not remove spaces");
-});
+    child.html('Updated');
+
+    ok($('#qunit-fixture').text().match(/Parent: Updated/), "should not remove spaces");
+  });
+
+}
