@@ -1,3 +1,5 @@
+var Metamorph = requireModule("metamorph");
+
 module("metamorph");
 
 test("it should return a metamorph object", function() {
