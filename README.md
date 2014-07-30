@@ -27,21 +27,23 @@ file a bug.
 
 ## Usage
 
-    // create the morph object
-    var morph = Metamorph("HI!");
+```javascript
+// create the morph object
+var morph = Metamorph("HI!");
 
-    // insert it into the DOM
-    $("#foo").html(morph.outerHTML());
+// insert it into the DOM
+$("#foo").html(morph.outerHTML());
 
-    // replace the contents
-    morph.html("BYE!");
+// replace the contents
+morph.html("BYE!");
 
-    // remove the morph
-    morph.remove();
+// remove the morph
+morph.remove();
 
-    // append the morph to an existing element, useful when
-    // manually creating morphs and not using a templating library
-    morph.appendTo(document.getElementById('foo'));
+// append the morph to an existing element, useful when
+// manually creating morphs and not using a templating library
+morph.appendTo(document.getElementById('foo'));
+```
 
 ## Notes
 
@@ -56,16 +58,18 @@ insert an `<li>` into a `<ul>`, but not a `<p>`.
 
 This holds for the initial insertion as well as any updates.
 
-    var ul = $("<ul>").appendTo("body").end();
+```javascript
+var ul = $("<ul>").appendTo("body").end();
 
-    var morph = Metamorph("<li>HI!</li>");
-    ul.append(morph.outerHTML()); // legal
+var morph = Metamorph("<li>HI!</li>");
+ul.append(morph.outerHTML()); // legal
 
-    var otherMorph = Metamorph("<p>HI!</p>");
-    ul.append(otherMorph.outerHTML()); // illegal
+var otherMorph = Metamorph("<p>HI!</p>");
+ul.append(otherMorph.outerHTML()); // illegal
 
-    morph.html("<li>BYE!</li>") // legal
-    morph.html("<p>BYE!</p>") // illegal
+morph.html("<li>BYE!</li>") // legal
+morph.html("<p>BYE!</p>") // illegal
+```
 
 ## Implementation
 
@@ -104,7 +108,9 @@ the main initial API is `outerHTML`.
 If you like, you can disable the range API by using an environment
 variable:
 
-    MetamorphENV = { DISABLE_RANGE_API: true }
+```javascript
+MetamorphENV = { DISABLE_RANGE_API: true }
+```
 
 The current implementation of the range API in many browsers is slower
 than the alternative implementation inside Metamorph.js. It is a good
